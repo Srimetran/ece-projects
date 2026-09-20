@@ -1,21 +1,27 @@
-# Logic Circuit Design & Optimization
+# Logic Circuit Optimization
 
 ## Overview
 
-Implemented and compared two equivalent three-input Boolean functions using discrete 74LS-series logic ICs on a breadboard. The project focused on translating Boolean expressions into physical gate-level circuits, validating their behavior, and identifying unnecessary hardware.
+Analyzed two Boolean functions, built their truth tables, implemented both with physical logic gates, and compared the implementations to determine which realization required less hardware.
 
-## Implementation
+## Method
 
-The circuits used 74LS04 inverters, 74LS08 AND gates, and 74LS32 OR gates with switches as inputs and an LED as the output indicator. One implementation required six gates, while an equivalent simplified implementation required four.
+The Boolean functions F(A,B,C) and G(A,B,C) were evaluated for every input combination. AND, OR, and NOT gates were then wired on a breadboard using switches as logic inputs and LEDs/logic probing to observe the outputs.
 
-A logic probe was used during troubleshooting when the LED did not behave as expected. Testing indicated that the internal logic states matched the expected truth-table behavior, demonstrating a practical hardware-debugging workflow.
+Testing each truth-table row allowed the physical circuits to be checked directly against the Boolean analysis rather than assuming that correct-looking wiring meant correct operation.
 
-## Key Takeaways
+## Result
 
-- Translated Boolean expressions into gate-level hardware
-- Built and tested circuits using 74LS-series ICs and a breadboard
-- Compared logically equivalent implementations by gate count
-- Used truth tables and a logic probe for verification and debugging
-- Observed how logic simplification reduces circuit complexity
+The measured circuit behavior matched the truth-table outputs. The comparison showed that **function G implemented the same required behavior more efficiently than function F because it used fewer gates**.
+
+The lab also provided practical debugging experience: in at least one test the LED appearance alone was misleading, while the logic probe confirmed that the circuit was wired and operating correctly.
+
+## Engineering Takeaway
+
+Boolean simplification has a direct hardware consequence. Reducing a logical expression can reduce gate count, wiring complexity, propagation paths, and opportunities for implementation errors.
+
+## Skills Demonstrated
+
+Boolean Algebra • Truth Tables • AND/OR/NOT Gates • Logic Optimization • Breadboarding • Logic Probes • Hardware Debugging
 
 **Context:** Collaborative Digital Logic Design laboratory project.
