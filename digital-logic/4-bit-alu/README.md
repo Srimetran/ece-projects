@@ -1,5 +1,7 @@
 # 4-Bit Arithmetic Logic Unit
 
+![4-bit ALU hardware](images/hardware.jpg)
+
 ## Overview
 
 Built a hardware **4-bit ALU** that performs addition, subtraction, increment, and decrement on signed binary values. The design combined multiplexers, XOR logic, and a 4-bit adder and required using **two's-complement arithmetic** for negative values.
