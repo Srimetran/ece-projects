@@ -2,21 +2,26 @@
 
 ## Overview
 
-Designed and analyzed combinational logic circuits using Boolean algebra, Karnaugh maps, truth tables, and NAND-based implementations. The project also explored timing hazards and how redundant implicants can remove glitches caused by propagation delays.
+Minimized and implemented combinational logic while exploring two practical digital-design ideas: implementing logic entirely with **NAND gates** and identifying/removing **timing hazards**.
 
-## Design Work
+## NAND-Only Implementation
 
-A four-variable Boolean function was minimized with a Karnaugh map and implemented using NAND logic. A second implementation introduced an overlapping K-map grouping to address a timing hazard between adjacent groups.
+The original AND, OR, and NOT operations were transformed into NAND-based equivalents. Because NAND is a universal gate, the same Boolean function can be implemented without requiring separate gate families.
 
-The work connected Boolean minimization with a practical hardware consideration: a logically correct circuit can still briefly produce an incorrect output when different signal paths have different propagation delays.
+This exercise connected Boolean identities to physical implementation: an algebraically equivalent expression can have a very different gate-level structure.
 
-## Key Takeaways
+## Karnaugh-Map Minimization
 
-- Karnaugh-map minimization
-- Sum-of-products Boolean expressions
-- NAND-NAND circuit implementation
-- Truth-table verification
-- Static timing-hazard analysis
-- Hazard mitigation through overlapping implicants
+Karnaugh maps were used to simplify the target functions and identify groupings that reduce the required logic. The minimized expressions were then translated into gate-level circuits.
+
+## Hazard Analysis
+
+The project also examined how different propagation delays through separate logic paths can produce a short unwanted output transition—a **glitch or hazard**—even when the steady-state Boolean values are correct.
+
+K-map analysis was used to identify the missing redundant grouping needed to maintain a stable output during an input transition. The corrected implementation was then used to avoid the glitch.
+
+## Skills Demonstrated
+
+Karnaugh Maps • NAND-Only Logic • Boolean Minimization • Combinational Circuits • Static Hazard Analysis • Propagation Delay • Breadboard Debugging
 
 **Context:** Collaborative Digital Logic Design laboratory project.
