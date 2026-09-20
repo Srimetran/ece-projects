@@ -2,29 +2,35 @@
 
 ## Overview
 
-Applied three foundational linear-circuit techniques—superposition, Thevenin equivalence, and Norton equivalence—to resistor networks and verified the analytical results experimentally.
+Applied **superposition, Thevenin equivalence, and Norton equivalence** to resistor networks and compared analytical predictions with physical measurements.
 
-## Superposition
+## Superposition Experiment
 
-For a linear circuit containing multiple independent sources, the response from each source can be evaluated separately and then summed. During the experiment, source combinations were changed and the resulting output voltage was measured to verify this behavior.
+For the resistor network used in the lab, nodal analysis produced:
 
-## Thevenin & Norton Equivalents
+    Vout = (Vs1 + Vs2) / 3
 
-A linear network viewed from two terminals can be represented in simplified form as either:
+The circuit was tested with multiple source combinations:
 
-- a Thevenin voltage source in series with a Thevenin resistance, or
-- a Norton current source in parallel with a Norton resistance.
+| Vs1 | Vs2 | Calculated Vout | Measured Vout |
+| ---: | ---: | ---: | ---: |
+| 8 V | 10 V | 6.00 V | 6.00 V |
+| 6 V | 12 V | 6.00 V | 6.00 V |
+| 12 V | 8 V | 6.67 V | 6.67 V |
 
-These equivalent models make it easier to analyze how a network interacts with different loads.
+With each source considered independently, the chosen 10 kΩ network reduced to:
 
-## Engineering Concepts
+    Vout1 = Vs1 / 3
+    Vout2 = Vs2 / 3
 
-- Kirchhoff-based circuit analysis
-- Superposition theorem
-- Thevenin equivalent circuits
-- Norton equivalent circuits
-- Load behavior
-- Breadboard implementation
-- Experimental vs. calculated values
+The measured proportionality coefficients were close to the theoretical **1/3** value: the report gives average values of **K1 ≈ 0.3322** and **K2 ≈ 0.35**.
+
+## Thevenin / Norton Analysis
+
+The second portion treated a larger resistor network as a two-terminal source network. A Thevenin equivalent replaces the original network with **Vth in series with Rth**; the corresponding Norton model uses **In in parallel with Rn**. The lab used a 12 V source and a designed divider/load network to compare the simplified equivalent behavior with the original circuit.
+
+## Skills Demonstrated
+
+Nodal Analysis • Superposition • Thevenin Equivalents • Norton Equivalents • Linear Circuit Analysis • Breadboarding • Experimental Verification
 
 **Context:** Collaborative Principles of Electrical Engineering I laboratory project.
