@@ -1,5 +1,7 @@
 # Programmable Constant-Current Source
 
+![Constant-current source schematic](images/schematic.jpg)
+
 ## Overview
 
 Designed a mixed hardware/software system intended to regulate load current from a programmable setpoint. The project combined an **Arduino, 4-bit R-2R DAC, op-amp circuitry, current-sense resistor, ADC measurement, and closed-loop control code**.
