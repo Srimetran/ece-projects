@@ -2,23 +2,38 @@
 
 ## Overview
 
-Built and characterized a 4-bit digital-to-analog converter using an R-2R resistor ladder. Digital input combinations were translated into discrete analog output-voltage levels and measured experimentally.
+Built and analyzed a **4-bit resistor-ladder DAC** driven by Arduino digital I/O. The project connected binary values to analog output voltage and then investigated how output loading and buffering affect a real DAC.
 
-## Architecture
+## DAC Relationship
 
-An R-2R ladder uses only two resistor values, R and 2R, while assigning a different analog weight to each digital bit. For a 4-bit input, binary codes from 0000 through 1111 produce a sequence of analog output levels.
+The 4-bit ladder produces a weighted analog output based on the four digital input voltages. The report expresses the loaded output relationship as:
 
-The implementation used four digital input bits, a breadboarded R-2R network, an Arduino, a digital multimeter, and an oscilloscope. The lab then extended the basic DAC toward generating time-varying analog waveforms from sequences of digital codes.
+    Vload = Vbit3/2 + Vbit2/4 + Vbit1/8 + Vbit0/16
 
-## Engineering Concepts
+The measured DAC voltages closely matched the expected values from the theoretical analysis.
 
-- Digital-to-analog conversion
-- R-2R resistor ladders
-- 4-bit binary representation
-- Bit weighting and resolution
-- Arduino digital outputs
-- Analog voltage measurement
-- Oscilloscope measurement
-- Discrete approximation of analog waveforms
+## Output Loading
 
-**Context:** Collaborative Principles of Electrical Engineering I laboratory project.
+The DAC was also modeled using its **Thevenin equivalent**. This made it possible to reason about how load resistance changes the delivered voltage and power instead of treating the DAC as an ideal voltage source.
+
+From the reported values:
+
+    Vth ≈ 4.69 V
+    Rth ≈ 10 kΩ
+    Isc = Vth / Rth ≈ 0.47 mA
+
+The short-circuit current represents the maximum unbuffered output-current condition in the Thevenin model.
+
+## Arduino Drive Limits
+
+The lab also considered the source-side limit of the Arduino outputs. Using the lab's stated **40 mA per digital I/O at 5 V**, the calculated per-pin power was 0.2 W and the four-I/O total was 0.8 W for the theoretical exercise.
+
+## Why Buffering Matters
+
+An op-amp buffer can isolate the resistor ladder from the load. The ladder then establishes the desired voltage while the buffer supplies load current, reducing the effect of load resistance on DAC accuracy.
+
+## Skills Demonstrated
+
+R-2R Ladders • DACs • Binary Weighting • Arduino GPIO • Thevenin Equivalents • Loading Effects • Op-Amp Buffering • Mixed-Signal Measurement
+
+**Context:** Principles of Electrical Engineering I laboratory project.
