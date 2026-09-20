@@ -1,33 +1,47 @@
-# FSM Traffic Signal Controller
+# Demand-Driven Traffic Signal Controller
 
 ## Overview
 
-Designed a demand-driven digital traffic-signal controller for a main road and cross road. Under normal conditions, the main road remains green. A pedestrian walk request initiates a timed sequence that transitions the intersection through amber, red, cross-road green, and cross-road amber before returning to the default state.
+Designed and implemented a **synchronous finite-state-machine traffic controller** for a main road, cross road, and pedestrian request. Under normal operation, the main road remains green and the cross road remains red. A pedestrian **Walk** request initiates the timed traffic sequence.
 
-## Architecture
+## Required Sequence
 
-The controller was designed as a finite-state machine with:
+The controller was designed around four states. After a pedestrian request, the main road transitions through amber to red while the cross road receives green, then amber, before the system returns to its default main-road-green state. Each timed state lasts approximately **4 seconds**.
 
-- State storage using flip-flops
-- Combinational transition logic
-- Output logic for the traffic signals
-- A clock generated with a 555 timer in astable mode
-- A pedestrian request input
+## Clock Generator
 
-A state diagram was used to define the controller behavior before deriving excitation logic and constructing the hardware schematic.
+A **555 timer in astable mode** generated a **0.25 Hz clock**, giving one state transition approximately every four seconds. The implemented timing network used approximately:
 
-## Testing & Debugging
+- R1 = 1 kΩ
+- R2 = 28 kΩ
+- C = 100 µF
 
-The implementation exposed an active-low output behavior that initially made the lights appear inverted. Debugging traced the behavior to the output convention rather than the state-transition logic. A logic probe was also part of the hardware-debugging process.
+This replaced the manual clock used in the earlier sequential-logic lab and allowed the traffic sequence to advance automatically.
 
-## Key Takeaways
+## FSM Implementation
 
-- Finite-state-machine architecture
-- State diagrams and excitation equations
-- Sequential and combinational logic integration
-- 555 timer clock generation
-- Active-high vs. active-low logic
-- Hardware debugging and verification
-- Translating a behavioral specification into a digital controller
+Two **74LS74 D flip-flops** stored state bits Q1 and Q0. From the state-transition analysis, the next-state logic included:
 
-**Context:** Collaborative Digital Logic Design laboratory project.
+    D1 = Q1 XOR Q0
+    D0 = Q0'[(Q1'P') + Q1]
+
+The combinational logic was implemented with:
+
+- 74LS86 XOR gates
+- 74LS08 AND gates
+- 74LS32 OR gates
+- 74LS04 NOT gates
+
+Traffic-light outputs were decoded from the state bits using additional logic including 74LS00 NAND gates.
+
+## Debugging
+
+During hardware testing, several LED outputs initially appeared to behave opposite to the expected state. The state-transition logic itself was correct; the issue was traced to **active-low output behavior**. Recognizing the distinction between active-high and active-low signals resolved the apparent inversion.
+
+The project was built and tested in sections, using a logic probe and intermediate checks to separate timing, state-memory, transition-logic, and output-decoder problems.
+
+## Skills Demonstrated
+
+FSM Design • 555 Timer • Astable Clock Generation • D Flip-Flops • Boolean Excitation Equations • Active-Low Logic • 74LS ICs • Hardware Debugging • Digital System Integration
+
+**Context:** Collaborative Digital Logic Design final laboratory project.
