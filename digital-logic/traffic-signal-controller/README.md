@@ -1,5 +1,7 @@
 # Demand-Driven Traffic Signal Controller
 
+![Traffic signal controller hardware](images/hardware.jpg)
+
 ## Overview
 
 Designed and implemented a **synchronous finite-state-machine traffic controller** for a main road, cross road, and pedestrian request. Under normal operation, the main road remains green and the cross road remains red. A pedestrian **Walk** request initiates the timed traffic sequence.
