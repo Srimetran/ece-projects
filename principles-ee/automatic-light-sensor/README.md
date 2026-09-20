@@ -1,5 +1,7 @@
 # Automatic Light Sensor
 
+![Automatic light sensor circuit](images/circuit.jpg)
+
 ## Overview
 
 Built an automatic lighting circuit that converts ambient light level into an electrical decision using a **photoresistor (LDR), resistor network, operational amplifier, and LED**. The goal was to make the LED turn on in darkness and turn off under brighter conditions.
